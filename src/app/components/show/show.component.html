@@ -1,0 +1,32 @@
+<div class="container center">
+  <div style="background-color: floralwhite">
+    <!-- picture -->
+    <div *ngFor="let landmarkResult of landmark">
+      <div>
+        <img
+          src="{{ landmarkResult.url }}"
+          alt="picture-landmark"
+          width="800px"
+        />
+      </div>
+      <!-- data -->
+      <div style="width: 800px">
+        <div class="text">
+          <h1>{{ landmarkResult.name }}</h1>
+          <p>
+            {{ landmarkResult.nameCountry }}
+          </p>
+          <p>
+            {{ landmarkResult.detail }}
+          </p>
+        </div>
+      </div>
+      <!-- button -->
+      <div class="text">
+        <button mat-raised-button color="primary" [routerLink]="['']">
+          Back
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

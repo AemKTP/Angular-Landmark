@@ -1,0 +1,59 @@
+<div>
+  <!-- Navbar -->
+  <div class="nav">
+    <mat-grid-list class="nav" cols="3" rowHeight="1:0.2">
+      <mat-grid-tile>
+        หมายเลขสถานที่:
+        <input type="number" min="1" #id style="width: 15%" />
+        <!-- <a href="javascript:history.back()">
+        </a> -->
+          <button mat-raised-button color="primary" (click)="findID(id)">
+            ค้นหา
+          </button>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        ค้นหาจากชื่อสถานที่: <input type="text" #searchName />
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="findName(searchName)"
+        >
+          ค้นหา
+        </button>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        เลือกประเทศ:
+        <mat-form-field appearance="outline" style="margin-top: 5%; width: 40%">
+          <mat-select (selectionChange)="SelectChange($event)">
+            <mat-option *ngFor="let country of nameCountry" [value]="country">
+              {{ country }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+
+  <!-- Main ShowData -->
+  <div>
+    <div class="center data" *ngFor="let landmarkResult of landmark">
+      <div>
+        <!-- <a href="javascript:history.back()">dwad</a> -->
+        <img
+          src="{{ landmarkResult.url }}"
+          alt="picture-landmark"
+          width="400px"
+          [routerLink]="['show', landmarkResult.idx]"
+        />
+      </div>
+
+      <div style="margin-left: 1.5%">
+        <h1>{{ landmarkResult.name }}</h1>
+        <p>{{ landmarkResult.country }}</p>
+        <p>{{ landmarkResult.detail }}</p>
+      </div>
+    </div>
+  </div>
+</div>
